@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Projet de Suivi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<script>
+    let slideIndex = 1;
+
+    function changeSlide(n) {
+        showSlide(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlide(slideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.carousel-item');
+        const dots = document.querySelectorAll('.dot');
+
+        if (n > slides.length) { slideIndex = 1; }
+        if (n < 1) { slideIndex = slides.length; }
+
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        slides[slideIndex - 1].classList.add('active');
+        dots[slideIndex - 1].classList.add('active');
+    }
+
+    // Auto-play (optionnel - défilement automatique)
+    // Décommenter pour activer :
+    // setInterval(() => changeSlide(1), 5000); // Change toutes les 5 secondes
+</script>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Projet de Suivi</h1>
+            </div>
+            <nav class="nav-main">
+                <ul>
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="pages/apropos.html">À Propos</a></li>
+                    <li><a href="pages/cours.html">Cours & Formations</a></li>
+                    <li><a href="pages/equipe.html">Équipe</a></li>
+                    <li><a href="pages/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <section class="hero">
+                <h2>Bienvenue sur le site non-officiel (pas encore) de l'EFREI !</h2>
+                <p>Découvrez notre projet de suivi et notre équipe dédiée</p>
+            </section>
+
+            <section class="carousel-section">
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/photo1.png" alt="Photo 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/photo2.png" alt="Photo 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/photo3.png" alt="Photo 3">
+                        </div>
+                    </div>
+
+                    <!-- Contrôles -->
+                    <button class="carousel-control prev" onclick="changeSlide(-1)">❮</button>
+                    <button class="carousel-control next" onclick="changeSlide(1)">❯</button>
+
+                    <!-- Indicateurs (points) -->
+                    <div class="carousel-indicators">
+                        <span class="dot active" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h3>À propos du Département d'Informatique de l'EFREI</h3>
+                <p>
+                    Ce site présente un projet de développement web créé dans le cadre
+                    des études en informatique à l'EFREI. Notre objectif est de démontrer
+                    nos compétences en conception et développement web.
+                </p>
+            </section>
+
+            <section class="content-section">
+                <h3>Sections Principales</h3>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Cours et Formations</h4>
+                        <p>Consultez les cours et formations proposés par nos enseignants.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Notre Équipe</h4>
+                        <p>Rencontrez les membres de notre équipe de projet.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Nous Contacter</h4>
+                        <p>Vous avez des questions ? Contactez-nous directement.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <nav class="nav-footer">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="pages/apropos.html">À Propos</a></li>
+                </ul>
+            </nav>
+            <p>&copy; 2026 Projet de Suivi EFREI. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
